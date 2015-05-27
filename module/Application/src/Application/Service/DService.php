@@ -7,23 +7,23 @@ class DService
 {
 
     /**
-     * @var AService
-     */
-    private $aService;
-
-    /**
      * @var BService
      */
     private $bService;
 
-    public function __construct(AService $aService, BService $bService)
+    /**
+     * @var CService
+     */
+    private $cService;
+
+    public function __construct(BService $bService, CService $cService)
     {
-        $this->aService = $aService;
         $this->bService = $bService;
+        $this->cService = $cService;
     }
 
     public function __toString()
     {
-        return $this->aService . ' ' . $this->bService . ' ' . 'd';
+        return $this->bService . ' ' . $this->cService . ' ' . 'd';
     }
 } 
