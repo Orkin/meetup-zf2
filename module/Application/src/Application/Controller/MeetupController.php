@@ -19,14 +19,6 @@ class MeetupController extends AbstractActionController
     private $meetupService;
 
     /**
-     * @param MeetupService $meetupService
-     */
-    public function __construct(MeetupService $meetupService)
-    {
-        $this->meetupService = $meetupService;
-    }
-
-    /**
      * @return ViewModel
      */
     public function indexAction()
@@ -38,8 +30,18 @@ class MeetupController extends AbstractActionController
 
         return new ViewModel(
             [
-                'date' => $this->meetupService->getActualFormatedDate(),
+                'date' => date('d/m/Y'),
             ]
         );
     }
+
+    /**
+     * @param MeetupService $meetupService
+     * @return $this
+     */
+    public function setMeetupService(MeetupService $meetupService)
+    {
+        $this->meetupService = $meetupService;
+    }
+
 }

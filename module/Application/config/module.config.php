@@ -2,7 +2,6 @@
 
 use Application\Controller\IndexController;
 use Application\Controller\MeetupController;
-use Application\Factory\MeetupControllerFactory;
 use Application\Service\MeetupService;
 
 return [
@@ -32,11 +31,9 @@ return [
     ],
     'controllers'     => [
         'invokables' => [
-            IndexController::class => IndexController::class,
+            IndexController::class  => IndexController::class,
+            MeetupController::class => MeetupController::class,
         ],
-        'factories'  => [
-            MeetupController::class => MeetupControllerFactory::class,
-        ]
     ],
     'service_manager' => [
         'invokables' => [
