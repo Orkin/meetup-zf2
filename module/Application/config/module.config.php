@@ -1,8 +1,14 @@
 <?php
 
+use Application\Service\AService;
+use Application\Service\BService;
 use Application\Controller\IndexController;
 use Application\Controller\MeetupController;
+use Application\Factory\MeetupControllerFactory;
+use Application\Factory\BServiceFactory;
 use Application\Service\MeetupService;
+use Application\Initializer\AServiceInitializer;
+use Application\Initializer\AServiceInitializer1;
 
 return [
     'router'          => [
@@ -32,13 +38,25 @@ return [
     'controllers'     => [
         'invokables' => [
             IndexController::class  => IndexController::class,
-            MeetupController::class => MeetupController::class,
         ],
+        'factories'  => [
+            MeetupController::class => MeetupControllerFactory::class
+        ],
+        'initializers' => [
+            AServiceInitializer::class,
+        ]
     ],
     'service_manager' => [
         'invokables' => [
             MeetupService::class => MeetupService::class,
+            AService::class      => AService::class,
         ],
+        'factories'  => [
+            BService::class => BServiceFactory::class,
+        ],
+        'initializers' => [
+            AServiceInitializer1::class,
+        ]
     ],
     'view_manager'    => [
         'display_not_found_reason' => true,

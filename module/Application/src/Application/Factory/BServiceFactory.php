@@ -8,7 +8,7 @@ use Application\Service\MeetupService;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class MeetupControllerFactory implements FactoryInterface
+class BServiceFactory implements FactoryInterface
 {
     /**
      * Create service
@@ -18,10 +18,6 @@ class MeetupControllerFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $parentLocator = $serviceLocator->getServiceLocator();
-
-        $bService      = $parentLocator->get(BService::class);
-
-        return new MeetupController($bService);
+        return new BService();
     }
 }
